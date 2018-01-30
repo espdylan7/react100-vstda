@@ -17,7 +17,6 @@ class App extends Component {
     this.addItem = this.addItem.bind(this);
     // this.editTodoItem = this.editTodoItem.bind(this);
     this.saveTodoItem = this.saveTodoItem.bind(this);
-    this.deleteTodoItem = this.deleteTodoItem.bind(this);
 
   }
 
@@ -33,7 +32,7 @@ class App extends Component {
     this.setState({ priority: e.target.value });
   };
 
-  deleteTodoItem(i, e) {
+  deleteTodoItem(e) {
     e.preventDefault();
     this.props.onDelete(this.props.task)
   };
@@ -54,6 +53,7 @@ class App extends Component {
     };
 
     tasks.push(task);
+
     this.setState({
       tasks: tasks
     });
@@ -63,7 +63,7 @@ class App extends Component {
   render() {
         this.state.tasks.map((e) => {
         return (
-          <Form tasks={e} delete={this.deleteTodoItem(e.target.i)} edit={this.editTodoItem} save={this.saveTodoItem}   />
+          <Form tasks={e} delete={() => this.deleteTodo(i)} edit={this.editTodoItem} save={this.saveTodoItem}   />
         );
       });
     return (
